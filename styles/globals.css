@@ -2,10 +2,63 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'W95FA';
+  src: url('../public/fonts/W95FA.otf'), url('../public/fonts/W95FA.otf') format('truetype'), url('../public/fonts/W95FA.otf') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  overflow-y: hidden;
+  font-family: W95FA;
+}
+body {
+  background: #1E1C1C;
 }
 
+.win-95_borders {
+  border-top: 2px solid white;
+  border-left: 2px solid white;
+  box-shadow: inset -2px -2px grey, 2px 2px black, 2px 0 black, 0 2px black, 1px 1px black;
+}
 
+.win-95_buttons {
+  border-top: 2px solid white;
+  border-left: 2px solid white;
+  box-shadow: inset -2px -2px grey, 2px 2px black, 2px 0 black, 0 2px black, 1px 1px black;
+}
+
+.win-95_buttons:hover {
+  border: 2px inset #fff;
+  background: silver;
+  color: #424242;
+  box-shadow: -1px -1px #000;
+}
+
+.win-95_buttons:focus {
+  border: 2px inset #fff !important;
+  background: silver;
+  color: #424242;
+  box-shadow: -1px -1px #000 !important;
+  outline: 0 !important;
+  background: url("../public/windows_icons/opened_app_background.png");
+}
+
+.undraggable-img {
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.win-95_borders-v2 {
+  border: 2px inset #fff;
+  background: silver;
+  box-shadow: -1px -1px #000;
+}
