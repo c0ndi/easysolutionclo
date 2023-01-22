@@ -71,13 +71,13 @@ function TaskBar() {
             <OpenedApp
                 icon={EasyCloShop}
                 name={"My Shop"}
-                link={"#"}
+                link={"https://easysolutionclo.com/"}
                 isOpen={true}
             />
             <OpenedApp
                 icon={EasyCloInstagram}
                 name={"My Instagram"}
-                link={"#"}
+                link={"https://www.instagram.com/easysolutionclo/?hl=pl"}
                 isOpen={true}
             />
         </section>
@@ -203,7 +203,7 @@ export default function DesktopBackground() {
                         <p className={"text-white text-center mt-2 text-xl"}>My Shop</p>
                     </Link>
 
-                    <Link href={"https://easysolutionclo.com/"} passHref target={"_blank"} className={"w-max inline-block"}>
+                    <Link href={"https://www.instagram.com/easysolutionclo/?hl=pl"} passHref target={"_blank"} className={"w-max inline-block"}>
                         <Image
                             src={EasyCloInstagram}
                             alt={"EasyCloInstagram"}
