@@ -13,6 +13,7 @@ import EasyLogo from '../../public/images/easylogo.png';
 import Image, {StaticImageData} from 'next/image'
 import {useEffect, useRef, useState} from "react";
 import Link from "next/link";
+import {setFips} from "crypto";
 
 function OpenedApp({icon, name, link, isOpen}:{
     icon: StaticImageData;
@@ -37,6 +38,16 @@ function OpenedApp({icon, name, link, isOpen}:{
 function TimeContainer() {
     const currentHours = new Date().getHours();
     const currentMinutes = new Date().getMinutes() < 10 ? "0" + new Date().getMinutes() : new Date().getMinutes();
+
+    const [fullTime, setFullTime] = useState(`${currentHours}: ${currentMinutes}`);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setFullTime(`${currentHours}:${currentMinutes}`)
+        }, 1000)
+
+        return () => clearInterval(interval)
+    })
     return (
         <button className={"absolute right-2 top-[4px] h-[48px] sm:w-[105px] w-max win-95_borders flex gap-2 justify-center items-center px-2 outline-none"}>
              <Image
@@ -188,9 +199,9 @@ export default function DesktopBackground() {
                 className={"w-full h-full object-cover absolute top-0 -z-10 opacity-70 undraggable-img"}
             />
 
-            <Image src={EasyLogo} alt={"EasyLogo"} className={"absolute top-[5px] scale-75"}/>
+            <Image src={EasyLogo} alt={"EasyLogo"} className={"absolute top-[5px] scale-75 mx-auto"}/>
 
-            <div>
+            <div className={"mt-32"}>
                 <LoadingAnimation/>
 
                 <div className={"flex justify-center gap-8"}>
@@ -198,18 +209,18 @@ export default function DesktopBackground() {
                         <Image
                             src={EasyCloShop}
                             alt={"EasyCloShop"}
-                            className={"mx-auto"}
+                            className={"mx-auto scale-75 sm:scale-100"}
                         />
-                        <p className={"text-white text-center mt-2 text-xl"}>My Shop</p>
+                        <p className={"text-white text-center mt-0 sm:mt-2 sm:text-xl text-lg"}>SHOP</p>
                     </Link>
 
                     <Link href={"https://www.instagram.com/easysolutionclo/?hl=pl"} passHref target={"_blank"} className={"w-max inline-block"}>
                         <Image
                             src={EasyCloInstagram}
                             alt={"EasyCloInstagram"}
-                            className={"mx-auto"}
+                            className={"mx-auto scale-[0.9] sm:scale-100"}
                         />
-                        <p className={"text-white text-center mt-4 text-xl"}>My Instagram</p>
+                        <p className={"text-white text-center mt-2 sm:mt-4 sm:text-xl text-lg"}>INSTAGRAM</p>
                     </Link>
                 </div>
             </div>
