@@ -27,7 +27,7 @@ function OpenedApp({icon, name, link, isOpen}:{
                 <Image
                     src={icon}
                     alt={name}
-                    className={"z-20 undraggable-img h-[44px] w-[44px]"}
+                    className={"z-20 undraggable-img sm:h-[44px] h-[20px] sm:w-[44px] w-[20px]"}
                 />
                 <p className={"text-xl z-20 hidden sm:inline"}>{name}</p>
             </button>
@@ -36,7 +36,7 @@ function OpenedApp({icon, name, link, isOpen}:{
 }
 
 function TimeContainer() {
-    const currentHours = new Date().getHours();
+    const currentHours = new Date().getHours() < 10 ? "0" + new Date().getHours() : new Date().getHours();
     const currentMinutes = new Date().getMinutes() < 10 ? "0" + new Date().getMinutes() : new Date().getMinutes();
 
     const [fullTime, setFullTime] = useState(`${currentHours}: ${currentMinutes}`);
@@ -49,13 +49,13 @@ function TimeContainer() {
         return () => clearInterval(interval)
     })
     return (
-        <button className={"absolute right-2 top-[4px] h-[48px] sm:w-[105px] w-max win-95_borders flex gap-2 justify-center items-center px-2 outline-none"}>
+        <button className={"absolute sm:right-2 right-1 sm:top-[4px] top-[1px] sm:h-[48px] h-[24px] sm:w-[105px] w-max win-95_borders flex gap-2 justify-center items-center px-2 outline-none"}>
              <Image
                 src={TimeWindowsLogo}
                 alt={"Time Windows Logo"}
                 className={"sm:inline hidden"}
             />
-            <p className={"text-xl"}>{currentHours}:{currentMinutes}</p>
+            <p className={"sm:text-xl text-sm"}>{fullTime}</p>
         </button>
     )
 }
@@ -66,18 +66,17 @@ function StartButton() {
             <Image
                 src={EasyLogo}
                 alt={"Start Windows Logo"}
-                className={"w-[50px]"}
+                className={"w-[50px] h-[24px]"}
             />
-            <p className={"text-xl"}>Start</p>
+            <p className={"sm:text-xl text-sm"}>Start</p>
         </button>
     )
 }
 
 function TaskBar() {
     return (
-        <section className={"win-95_borders absolute flex gap-2 bottom-0 left-0 w-full h-[60px] bg-[#C3C3C3] p-1"}>
+        <section className={"win-95_borders absolute flex sm:gap-2 gap-1 bottom-0 left-0 w-full sm:h-[60px] h-[30px] bg-[#C3C3C3] sm:p-1 p-[2px]"}>
             <StartButton/>
-            <TimeContainer/>
 
             <OpenedApp
                 icon={EasyCloShop}
@@ -91,6 +90,8 @@ function TaskBar() {
                 link={"https://www.instagram.com/easysolutionclo/?hl=pl"}
                 isOpen={true}
             />
+
+            <TimeContainer/>
         </section>
     )
 }
@@ -121,39 +122,39 @@ function LoadingAnimation() {
         }
     }
     return (
-        <div className={"relative sm:w-[600px] xs:w-[380px] mb-12 win-95_borders z-10 self-center bg-[#C3C3C3] pl-[3px] pr-[6px] pt-[2px] sm:mt-0 mt-32"}>
-{/*w-[calc(100%_-_20px)] h-[calc(100%_-_40px)]*/}
+        <div className={"relative w-[350px] sm:w-[600px] mb-24 win-95_borders z-10 self-center bg-[#C3C3C3] sm:pl-[3px] sm:pr-[6px] pr-[2px] sm:pt-[2px] pt-[1px]"}>
+        {/*w-[calc(100%_-_20px)] h-[calc(100%_-_40px)]*/}
 
             {openErrBox &&
                 <div className={"absolute top-[38px] win-95_borders left-[50px] bg-[#C3C3C3]"}>
-                    <div className={"w-full bg-[#02007F] h-[32px] flex items-center px-1 gap-2"}>
-                        <Image src={ErrorIcon} alt={"easysolutionclo"} className={"ml-1 h-[24px] w-[24px] object-cover"}/>
-                        <p className={"text-2xl text-white"}>Error</p>
+                    <div className={"w-full bg-[#02007F] sm:h-[32px] h-[20px] flex items-center sm:px-1 px-[2px] sm:gap-2 gap-1"}>
+                        <Image src={ErrorIcon} alt={"easysolutionclo"} className={"ml-1 sm:h-[24px] sm:w-[24px] h-[18px] w-[18px] object-cover"}/>
+                        <p className={"sm:text-2xl text-base text-white"}>Error</p>
 
-                        <Image src={CloseIcon} alt={"Windows App Icons"} className={"ml-auto h-[24px] object-cover cursor-pointer undraggable-img"} onClick={handleErrBox} />
+                        <Image src={CloseIcon} alt={"Windows App Icons"} className={"ml-auto sm:h-[24px] sm:w-[24px] h-[18px] w-[18px] object-cover cursor-pointer undraggable-img"} onClick={handleErrBox} />
                     </div>
 
                     <div className={"flex items-center justify-center gap-4 py-8 px-8"}>
-                        <Image src={ErrorIconBg} alt={"Windows App Icons"} className={"h-[52px] w-[52px] undraggable-img"}/>
-                        <p className={"text-xl"}>Take it easy..ツ</p>
+                        <Image src={ErrorIconBg} alt={"Windows App Icons"} className={"sm:h-[52px] sm:w-[52px] h-[40px] w-[40px] undraggable-img"}/>
+                        <p className={"sm:text-xl text-base"}>Take it easy..ツ</p>
                     </div>
 
                     <div className={"grid place-items-center pb-8"}>
-                        <button className={"win-95_buttons px-12 text-2xl"} onClick={handleErrBox}>Ok.</button>
+                        <button className={"win-95_buttons px-12 sm:text-2xl text-base"} onClick={handleErrBox}>Ok.</button>
                     </div>
                 </div>
             }
 
-            <div className={"w-full bg-[#02007F] h-[32px] flex items-center px-1 gap-2"}>
-                <Image src={EasyCloShop} alt={"easysolutionclo"} className={"h-[24px] w-[24px] object-cover"}/>
-                <p className={"text-2xl text-white"}>easysolutionclo.exe</p>
+            <div className={"w-full bg-[#02007F] sm:h-[32px] h-[20px] flex items-center sm:px-1 px-[2px] sm:gap-2 gap-1"}>
+                <Image src={EasyCloShop} alt={"easysolutionclo"} className={"sm:h-[24px] h-[18px] sm:w-[24px] w-[18px] object-cover"}/>
+                <p className={"sm:text-2xl text-base text-white"}>easysolutionclo.exe</p>
 
-                <Image src={AppIcons} alt={"Windows App Icons"} className={"ml-auto h-[24px] object-cover cursor-pointer undraggable-img"}/>
+                <Image src={AppIcons} alt={"Windows App Icons"} className={"ml-auto sm:h-[24px] h-[18px] w-[60px] sm:w-auto object-cover cursor-pointer undraggable-img"}/>
             </div>
 
             <div className={"sm:px-12 px-3 py-6"}>
                 <div>
-                    <div className={"text-xl"}>
+                    <div className={"sm:text-xl text-base"}>
                         <p>Downloading:</p>
                         <p>easysolutionclo.exe from Poland</p>
                     </div>
@@ -179,11 +180,11 @@ function LoadingAnimation() {
                     <div className={"w-[20px] h-full bg-[#02007F] last-loading-box block"} ref={lastLoadingBox}></div>
                 </div>
 
-                <p className={"text-center py-2 mt-3 text-xl"}>Please wait...</p>
+                <p className={"text-center py-2 mt-3 sm:text-xl text-base"}>Please wait...</p>
                 {/*<p className={"text-center py-10 mt-3 text-xl"}>Take it easy.. ツ</p>*/}
 
                 <div className={"grid place-items-center"}>
-                    <button className={"win-95_buttons px-12 text-2xl"} onClick={handleErrBox}>Abort</button>
+                    <button className={"win-95_buttons px-12 sm:text-2xl text-base"} onClick={handleErrBox}>Abort</button>
                 </div>
             </div>
         </div>
@@ -192,26 +193,26 @@ function LoadingAnimation() {
 export default function DesktopBackground() {
     return (
         <>
-        <section className={"grid place-items-center h-screen"}>
+        <section className={"flex justify-center items-center h-screen"}>
             <Image
                 src={DesktopBackgroundImg}
                 alt={"Pixelized logo"}
                 className={"w-full h-full object-cover absolute top-0 -z-10 opacity-70 undraggable-img"}
             />
 
-            <Image src={EasyLogo} alt={"EasyLogo"} className={"absolute top-[5px] scale-75 mx-auto"}/>
+            <Image src={EasyLogo} alt={"EasyLogo"} className={"absolute top-[15px] h-[50px] w-[100px] sm:w-[300px] sm:h-[150px] sm:top-[20px]"}/>
 
-            <div className={"mt-32"}>
+            <div className={"sm:mt-32 mt-0 sm:h-auto h-screen flex justify-center flex-col relative"}>
                 <LoadingAnimation/>
 
-                <div className={"flex justify-center gap-8"}>
+                <div className={"flex justify-center w-full gap-8 sm:relative absolute sm:bottom-0 bottom-[120px]"}>
                     <Link href={"https://easysolutionclo.com/"} passHref target={"_blank"} className={"w-max inline-block"}>
                         <Image
                             src={EasyCloShop}
                             alt={"EasyCloShop"}
                             className={"mx-auto scale-75 sm:scale-100"}
                         />
-                        <p className={"text-white text-center mt-0 sm:mt-2 sm:text-xl text-lg"}>SHOP</p>
+                        <p className={"text-white text-center mt-0 sm:mt-2 sm:text-xl text-base "}>SHOP</p>
                     </Link>
 
                     <Link href={"https://www.instagram.com/easysolutionclo/?hl=pl"} passHref target={"_blank"} className={"w-max inline-block"}>
@@ -220,7 +221,7 @@ export default function DesktopBackground() {
                             alt={"EasyCloInstagram"}
                             className={"mx-auto scale-[0.9] sm:scale-100"}
                         />
-                        <p className={"text-white text-center mt-2 sm:mt-4 sm:text-xl text-lg"}>INSTAGRAM</p>
+                        <p className={"text-white text-center mt-2 sm:mt-4 sm:text-xl text-base"}>INSTAGRAM</p>
                     </Link>
                 </div>
             </div>
