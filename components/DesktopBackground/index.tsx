@@ -13,7 +13,7 @@ import EasyLogo from '../../public/images/easylogo.png';
 import Image, {StaticImageData} from 'next/image'
 import {useEffect, useRef, useState} from "react";
 import Link from "next/link";
-import {setFips} from "crypto";
+import { Typewriter } from 'react-simple-typewriter'
 
 function OpenedApp({icon, name, link, isOpen}:{
     icon: StaticImageData;
@@ -190,9 +190,35 @@ function LoadingAnimation() {
         </div>
     )
 }
+
+function LoadingScreen() {
+    return (
+        <div className={"w-full h-full top-0 left-0 absolute h-screen flex flex-col gap-8 items-center justify-center bg-black z-[999]"}>
+            <p className={"text-xl sm:text-4xl text-[#c3c3c3] text-center"}>
+                <Typewriter words={["welcome to easysolutionclo..."]}/>
+            </p>
+            <Image src={EasyLogo} alt={"EasyLogo"} className={"absolute bottom-10 h-[30px] w-[60px] sm:w-[200px] sm:h-[75px]"}/>
+        </div>
+    )
+}
+
 export default function DesktopBackground() {
+    const [activeLoadingScreen, setActiveLoadingScreen] = useState<boolean>(true);
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            setActiveLoadingScreen(false)
+        }, 3500)
+
+        return () => {
+            clearTimeout(timeout);
+        }
+    }, [])
     return (
         <>
+        {activeLoadingScreen &&
+            <LoadingScreen/>
+        }
         <section className={"flex justify-center items-center h-screen"}>
             <Image
                 src={DesktopBackgroundImg}
