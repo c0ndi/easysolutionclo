@@ -135,7 +135,7 @@ function LoadingAnimation() {
                     </div>
 
                     <div className={"flex items-center justify-center gap-4 py-8 px-8"}>
-                        <Image src={ErrorIconBg} alt={"Windows App Icons"} className={"sm:h-[52px] sm:w-[52px] h-[40px] w-[40px] undraggable-img"}/>
+                        <Image src={ErrorIconBg} priority alt={"Windows App Icons"} className={"sm:h-[52px] sm:w-[52px] h-[40px] w-[40px] undraggable-img"}/>
                         <p className={"sm:text-xl text-base"}>Take it easy..ツ</p>
                     </div>
 
@@ -262,20 +262,3 @@ export default function DesktopBackground() {
         </>
     )
 }
-
-// todo
-// - dokonczyc projekt alternatywnej wersji z otwartym menu
-// - wykadrowac na kazdej rozdzielczosci tlo
-// - dzialanie pulpitu
-// - zamykanie okien
-// - otwieranie okien
-// - wersja mobilna
-
-// ikona
-
-{/*<Image*/}
-{/*    src={EasyCloShop}*/}
-{/*    alt={"EasyCloShop"}*/}
-{/*    className={"absolute top-[400px] left-[800px]"}*/}
-{/*/>*/}
-{/*<p className={"text-white absolute left-[805px] top-[475px]"}>My Shop</p>*/}
