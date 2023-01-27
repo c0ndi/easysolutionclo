@@ -1,7 +1,5 @@
 import DesktopBackgroundImg from '../../public/images/desktop-background-grass.jpg'
-import StartWindowsLogo from '../../public/windows_icons/stsrt_windows_logo.png';
 import TimeWindowsLogo from '../../public/windows_icons/time_windows_logo.png';
-import ComputerWindowsLogo from '../../public/windows_icons/computer_windows_logo.png';
 import EasyCloShop from '../../public/windows_icons/easyclo_shop.png';
 import EasyCloInstagram from '../../public/windows_icons/easyclo_instagram.png';
 import AppIcons from '../../public/windows_icons/windows_app_icons.png'
@@ -9,6 +7,8 @@ import CloseIcon from '../../public/windows_icons/close_prompt.png'
 import ErrorIcon from '../../public/windows_icons/error_icon.png'
 import ErrorIconBg from '../../public/windows_icons/error_icon_bg.png'
 import EasyLogo from '../../public/images/easylogo.png';
+import EasyLogoGifPink from '../../public/images/rozowe.gif';
+import EasyLogoGifYellow from '../../public/images/zolty.gif';
 
 import Image, {StaticImageData} from 'next/image'
 import {useEffect, useRef, useState} from "react";
@@ -60,9 +60,9 @@ function TimeContainer() {
     )
 }
 
-function StartButton() {
+function StartButton({onClickFunc}: {onClickFunc: () => void}) {
     return (
-        <button className={"h-full win-95_borders flex gap-2 items-center px-2 outline-none"}>
+        <button className={"h-full win-95_borders flex gap-2 items-center px-2 outline-none"} onClick={onClickFunc}>
             <Image
                 src={EasyLogo}
                 alt={"Start Windows Logo"}
@@ -73,10 +73,10 @@ function StartButton() {
     )
 }
 
-function TaskBar() {
+function TaskBar({setActiveLoadingScreen}: {setActiveLoadingScreen: (value: boolean) => void;}) {
     return (
         <section className={"win-95_borders absolute flex sm:gap-2 gap-1 bottom-0 left-0 w-full sm:h-[60px] h-[30px] bg-[#C3C3C3] sm:p-1 p-[2px]"}>
-            <StartButton/>
+            <StartButton onClickFunc={() => setActiveLoadingScreen(true)}/>
 
             <OpenedApp
                 icon={EasyCloShop}
@@ -197,7 +197,7 @@ function LoadingScreen() {
             <p className={"text-xl sm:text-4xl text-[#c3c3c3] text-center"}>
                 <Typewriter words={["welcome to easysolutionclo..."]}/>
             </p>
-            <Image src={EasyLogo} alt={"EasyLogo"} className={"absolute bottom-10 h-[30px] w-[60px] sm:w-[200px] sm:h-[75px]"}/>
+            <Image src={EasyLogo} alt={"EasyLogo"} className={"absolute bottom-10 h-[30px] w-[60px] sm:w-[200px] sm:h-[100px]"}/>
         </div>
     )
 }
@@ -213,7 +213,7 @@ export default function DesktopBackground() {
         return () => {
             clearTimeout(timeout);
         }
-    }, [])
+    }, [activeLoadingScreen])
     return (
         <>
         {activeLoadingScreen &&
@@ -226,7 +226,12 @@ export default function DesktopBackground() {
                 className={"w-full h-full object-cover absolute top-0 -z-10 opacity-70 undraggable-img"}
             />
 
-            <Image src={EasyLogo} alt={"EasyLogo"} className={"absolute top-[15px] h-[50px] w-[100px] sm:w-[300px] sm:h-[150px] sm:top-[20px]"}/>
+            <Image
+                src={EasyLogoGifPink}
+                alt={"EasyLogo"}
+                className={"undraggable-img absolute top-[45px] h-[100px] w-[200px] sm:w-[300px] sm:h-[150px] sm:top-[60px]"}
+                priority
+            />
 
             <div className={"sm:mt-32 mt-0 sm:h-auto h-screen flex justify-center flex-col relative"}>
                 <LoadingAnimation/>
@@ -253,7 +258,7 @@ export default function DesktopBackground() {
             </div>
 
         </section>
-        <TaskBar/>
+        <TaskBar setActiveLoadingScreen={setActiveLoadingScreen}/>
         </>
     )
 }
