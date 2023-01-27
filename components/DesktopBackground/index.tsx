@@ -229,7 +229,7 @@ export default function DesktopBackground() {
             <Image
                 src={EasyLogoGifPink}
                 alt={"EasyLogo"}
-                className={"undraggable-img absolute top-[45px] h-[100px] w-[200px] sm:w-[300px] sm:h-[150px] sm:top-[60px]"}
+                className={"undraggable-img absolute top-[45px] h-[100px] w-[200px] sm:w-[300px] sm:h-[150px] sm:top-[25px]"}
                 priority
             />
 
