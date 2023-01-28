@@ -237,6 +237,7 @@ export default function DesktopBackground() {
                 alt={"EasyLogo"}
                 className={"undraggable-img absolute top-[45px] h-[100px] w-[200px] sm:w-[300px] sm:h-[150px] sm:top-[25px]"}
                 priority
+                quality={50}
             />
 
             <div className={"sm:mt-32 mt-0 sm:h-auto h-screen flex justify-center flex-col relative"}>
