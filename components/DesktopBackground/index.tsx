@@ -9,6 +9,7 @@ import ErrorIconBg from '../../public/windows_icons/error_icon_bg.png'
 import EasyLogo from '../../public/images/pixelized-logo.png';
 import EasyLogoGifPink from '../../public/images/rozowe.gif';
 import EasyCopyingGif from '../../public/images/copying_gif_pro.gif'
+import EasyLogoLoadingScreen from '../../public/images/easylogo.png';
 
 import Image, {StaticImageData} from 'next/image'
 import {useEffect, useRef, useState} from "react";
@@ -70,7 +71,7 @@ function StartButton({onClickFunc}: {onClickFunc: () => void}) {
             <Image
                 src={EasyLogo}
                 alt={"Start Windows Logo"}
-                className={"sm:w-[90px] sm:h-[40px] h-[24px] w-[60px]"}
+                className={"sm:w-[85px] sm:h-[50px] h-[24px] w-[60px]"}
             />
             <p className={"sm:text-xl text-sm"}>Start</p>
         </button>
@@ -203,7 +204,7 @@ function LoadingScreen() {
             <p className={"text-xl sm:text-4xl text-[#c3c3c3] text-center"}>
                 <Typewriter words={["welcome to easysolutionclo..."]}/>
             </p>
-            <Image src={EasyLogo} alt={"EasyLogo"} className={"absolute bottom-10 h-[30px] w-[60px] sm:w-[200px] sm:h-[100px]"}/>
+            <Image src={EasyLogoLoadingScreen} alt={"EasyLogo"} className={"absolute bottom-10 h-[30px] w-[60px] sm:w-[200px] sm:h-[100px]"}/>
         </div>
     )
 }
