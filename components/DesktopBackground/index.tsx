@@ -71,7 +71,7 @@ function StartButton({onClickFunc}: {onClickFunc: () => void}) {
             <Image
                 src={EasyLogo}
                 alt={"Start Windows Logo"}
-                className={"sm:w-[85px] sm:h-[50px] h-[24px] w-[60px]"}
+                className={"sm:w-[85px] sm:h-[50px] h-[22px] w-[45px]"}
             />
             <p className={"sm:text-xl text-sm"}>Start</p>
         </button>
