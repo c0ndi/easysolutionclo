@@ -6,9 +6,9 @@ import AppIcons from '../../public/windows_icons/windows_app_icons.png'
 import CloseIcon from '../../public/windows_icons/close_prompt.png'
 import ErrorIcon from '../../public/windows_icons/error_icon.png'
 import ErrorIconBg from '../../public/windows_icons/error_icon_bg.png'
-import EasyLogo from '../../public/images/easylogo.png';
+import EasyLogo from '../../public/images/pixelized-logo.png';
 import EasyLogoGifPink from '../../public/images/rozowe.gif';
-import EasyCopyingGif from '../../public/images/copying_gif.gif';
+import EasyCopyingGif from '../../public/images/copying_gif_pro.gif'
 
 import Image, {StaticImageData} from 'next/image'
 import {useEffect, useRef, useState} from "react";
@@ -70,7 +70,7 @@ function StartButton({onClickFunc}: {onClickFunc: () => void}) {
             <Image
                 src={EasyLogo}
                 alt={"Start Windows Logo"}
-                className={"w-[50px] h-[24px]"}
+                className={"sm:w-[90px] sm:h-[40px] h-[24px] w-[60px]"}
             />
             <p className={"sm:text-xl text-sm"}>Start</p>
         </button>
@@ -226,11 +226,11 @@ export default function DesktopBackground() {
             <LoadingScreen/>
         }
         <section className={"flex justify-center items-center h-screen"}>
-            <Image
-                src={DesktopBackgroundImg}
-                alt={"Pixelized logo"}
-                className={"w-full h-full object-cover absolute top-0 -z-10 opacity-70 undraggable-img"}
-            />
+            {/*<Image*/}
+            {/*    src={DesktopBackgroundImg}*/}
+            {/*    alt={"Pixelized logo"}*/}
+            {/*    className={"w-full h-full object-cover absolute top-0 -z-10 opacity-70 undraggable-img"}*/}
+            {/*/>*/}
 
             <Image
                 src={EasyLogoGifPink}
