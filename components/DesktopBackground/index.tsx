@@ -8,7 +8,7 @@ import ErrorIcon from '../../public/windows_icons/error_icon.png'
 import ErrorIconBg from '../../public/windows_icons/error_icon_bg.png'
 import EasyLogo from '../../public/images/easylogo.png';
 import EasyLogoGifPink from '../../public/images/rozowe.gif';
-import EasyLogoGifYellow from '../../public/images/zolty.gif';
+import EasyCopyingGif from '../../public/images/copying_gif.gif';
 
 import Image, {StaticImageData} from 'next/image'
 import {useEffect, useRef, useState} from "react";
@@ -36,13 +36,17 @@ function OpenedApp({icon, name, link, isOpen}:{
 }
 
 function TimeContainer() {
-    const currentHours = new Date().getHours() < 10 ? "0" + new Date().getHours() : new Date().getHours();
-    const currentMinutes = new Date().getMinutes() < 10 ? "0" + new Date().getMinutes() : new Date().getMinutes();
+    let currentHours = new Date().getHours() < 10 ? "0" + new Date().getHours() : new Date().getHours();
+    let currentMinutes = new Date().getMinutes() < 10 ? "0" + new Date().getMinutes() : new Date().getMinutes();
 
     const [fullTime, setFullTime] = useState(`${currentHours}: ${currentMinutes}`);
 
     useEffect(() => {
+
         const interval = setInterval(() => {
+            currentHours = new Date().getHours() < 10 ? "0" + new Date().getHours() : new Date().getHours();
+            currentMinutes = new Date().getMinutes() < 10 ? "0" + new Date().getMinutes() : new Date().getMinutes();
+
             setFullTime(`${currentHours}:${currentMinutes}`)
         }, 1000)
 
@@ -153,14 +157,16 @@ function LoadingAnimation() {
             </div>
 
             <div className={"sm:px-12 px-3 py-6"}>
-                <div>
+                <div className={"flex justify-between"}>
                     <div className={"sm:text-xl text-base"}>
                         <p>Downloading:</p>
                         <p>easysolutionclo.exe from Poland</p>
                     </div>
-                    <div>
-                        {/*    animacja     */}
-                    </div>
+                    <Image
+                        src={EasyCopyingGif}
+                        alt={"Copying gif"}
+                        className={"absolute sm:right-12 sm:top-[70px] sm:scale-100 -right-4 top-[50px] scale-[.65]"}
+                    />
                 </div>
 
                 <div className={"mt-2 h-[36px] win-95_borders-v2 flex gap-1 pb-[2px]"}>
