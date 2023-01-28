@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Create Next App</title>
+        <title>easysolutionclo</title>
         <meta name="description" content="Take it easy :)" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link
